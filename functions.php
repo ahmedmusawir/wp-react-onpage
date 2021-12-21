@@ -153,6 +153,7 @@ require get_theme_file_path('/_functions/selflist/ajax/profile-data-insert-ajax.
 // FLAG RELATED
 require get_theme_file_path('/_functions/selflist/cpt/flag-post-type.php');
 require get_theme_file_path('/_functions/selflist/ajax/list-flag-ajax.php');
+require get_theme_file_path('/_functions/selflist/ajax/test-wp-ajax-function.php');
 
 // FILTERS FOR ACF TO REST PLUGIN ... DON'T NEED THAT PLUGIN
 // Enable the option show in rest

@@ -8,7 +8,7 @@ function AddPostPage() {
     <Page wide={false} pageTitle="Movie Form">
       <div className="row justify-content-center">
         <div className="col-sm-12">
-          <Content width="w-100" cssClassNames="bg-light">
+          <Content width="w-100" cssClassNames="bg-light mt-3">
             <h1>Add Post</h1>
             <AddForm />
           </Content>

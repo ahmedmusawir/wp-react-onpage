@@ -9,6 +9,7 @@ import BlogContextProvider from './contexts/BlogContext';
 import SinglePostPage from './pages/SinglePostPage';
 import EditPostPage from './pages/EditPostPage';
 import AddPostPage from './pages/AddPostPage';
+import AjaxOnePage from './pages/AjaxOnePage';
 
 function ReactWpApp1() {
   return (
@@ -28,6 +29,9 @@ function ReactWpApp1() {
             </Route>
             <Route exact path="/edit-post/:id">
               <EditPostPage />
+            </Route>
+            <Route exact path="/ajax-one">
+              <AjaxOnePage />
             </Route>
             <Route exact path="/page1">
               <ReactAppThemOne />

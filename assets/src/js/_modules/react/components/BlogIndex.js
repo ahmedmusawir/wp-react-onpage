@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import parse from 'react-html-parser';
 import { BlogContext } from '../contexts/BlogContext';
 
 function BlogIndex() {
@@ -21,7 +22,7 @@ function BlogIndex() {
                 <div className="col-sm-10">
                   <Link to={`/post/${post.id}`}>
                     <li className="list-group-item">
-                      {post.title.rendered}{' '}
+                      {parse(post.title.rendered)}{' '}
                       <span className="badge badge-primary">
                         Post ID: {post.id}
                       </span>

@@ -6,8 +6,13 @@ import React from 'react';
 import ReactAppThemeOne from './_modules/react/ReactAppThemeOne';
 import ReactAppThemeTwo from './_modules/react/ReactAppThemeTwo';
 import ReactWpApp1 from './_modules/react/ReactWpApp1';
+import $ from 'jquery';
+
 class App {
   constructor() {
+    const ajaxFunction = 'test_wp_ajax_function';
+    const postId = 465;
+
     console.info('ES8 App PUBLIC Initialized!');
     // LUNCHING REACT APP THEME ONE
     const appThemeOne = document.getElementById('app-theme-1');
