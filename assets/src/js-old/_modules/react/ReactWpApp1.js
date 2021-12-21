@@ -8,7 +8,6 @@ import HomePage from './pages/HomePage';
 import BlogContextProvider from './contexts/BlogContext';
 import SinglePostPage from './pages/SinglePostPage';
 import EditPostPage from './pages/EditPostPage';
-import AddPostPage from './pages/AddPostPage';
 
 function ReactWpApp1() {
   return (
@@ -19,9 +18,6 @@ function ReactWpApp1() {
           <Switch>
             <Route exact path="/">
               <HomePage />
-            </Route>
-            <Route exact path="/add-post">
-              <AddPostPage />
             </Route>
             <Route exact path="/post/:id">
               <SinglePostPage />

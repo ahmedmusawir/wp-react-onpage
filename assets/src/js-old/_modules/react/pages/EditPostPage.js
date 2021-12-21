@@ -16,7 +16,7 @@ function EditPostPage() {
   singlePost = _.find(posts, (post) => post.id === Number(id));
 
   return (
-    <Page wide={false} pageTitle="Post Edit Form">
+    <Page wide={true} pageTitle="Post Edit Form">
       {isPending && (
         <Content width="w-100" cssClassNames="h-100 row align-items-center">
           <div className="text-center mt-5">
@@ -27,7 +27,7 @@ function EditPostPage() {
       <div className="row justify-content-center">
         <div className="col-sm-12">
           {singlePost && (
-            <Content width="w-100" cssClassNames="bg-light mt-3">
+            <Content width="w-100" cssClassNames="bg-light">
               <h1>Edit Post</h1>
               <h4>Post ID: {id}</h4>
               <EditForm singlePost={singlePost} postId={postId} />

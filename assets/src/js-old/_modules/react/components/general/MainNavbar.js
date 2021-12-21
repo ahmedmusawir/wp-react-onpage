@@ -6,16 +6,11 @@ function MainNavbar(props) {
     <nav className="navbar navbar-expand-sm navbar-light bg-warning">
       <section className="container">
         <a className="navbar-brand" href="#">
-          React Hash
+          React Hash Navbar
         </a>
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink to={'/add-post'} className="nav-link">
-                Add Post
-              </NavLink>
-            </li>
             <li className="nav-item">
               <NavLink to={'/page1'} className="nav-link">
                 Page 1
