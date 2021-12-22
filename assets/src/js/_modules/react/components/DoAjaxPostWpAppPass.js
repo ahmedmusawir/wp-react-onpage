@@ -29,12 +29,11 @@ function DoAjax() {
     // const userName = 'cgteam';
     // const applicationPassword = 'hUoV 8WCW Dllz 4rP4 BlEo Ip27';
 
-    let token;
+    const token = btoa(userName + ':' + applicationPassword);
 
     const fetchPosts = async () => {
       await $.ajax({
         beforeSend: (xhr) => {
-          token = btoa(userName + ':' + applicationPassword);
           xhr.setRequestHeader('Authorization', 'Basic ' + token);
         },
         url: selflistData.root_url + '/wp-json/wp/v2/posts',

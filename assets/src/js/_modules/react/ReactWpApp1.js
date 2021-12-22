@@ -10,6 +10,7 @@ import SinglePostPage from './pages/SinglePostPage';
 import EditPostPage from './pages/EditPostPage';
 import AddPostPage from './pages/AddPostPage';
 import AjaxOnePage from './pages/AjaxOnePage';
+import WpapiOnePage from './pages/WpapiOnePage';
 
 function ReactWpApp1() {
   return (
@@ -32,6 +33,9 @@ function ReactWpApp1() {
             </Route>
             <Route exact path="/ajax-one">
               <AjaxOnePage />
+            </Route>
+            <Route exact path="/wpapi-one">
+              <WpapiOnePage />
             </Route>
             <Route exact path="/page1">
               <ReactAppThemOne />

@@ -22,6 +22,11 @@ function MainNavbar(props) {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink to={'/wpapi-one'} className="nav-link">
+                WPAPI One
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink to={'/page1'} className="nav-link">
                 Page 1
               </NavLink>
