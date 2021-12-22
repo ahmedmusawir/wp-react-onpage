@@ -12,28 +12,31 @@ function DoWpapiOne() {
     username: 'cgteam',
     password: '8gLw rmzE hQhZ av4L 1ljg x119',
   });
+  // SETTING CPT ROUTE
+  wp.flag = wp.registerRoute('wp/v2', '/flag');
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setIsPending(true);
+        // Fetch Search by Text
+        const fetchedPosts = await wp.posts().search('moose');
+        // const fetchedPosts = await wp.categories().search('app');
+        // Fetch Posts by Status
+        // const fetchedPosts = await wp
+        //   .posts()
+        //   .status(['trash', 'pending'])
+        //   .get();
+        // Fetch Users
+        // const fetchedPosts = await wp.users().get();
         // Fetch posts
         // const fetchedPosts = await wp.posts().get();
         // Fetch Category
-        const fetchedPosts = await wp.categories().get();
-        // Fetch Category
         // const fetchedPosts = await wp.categories().get();
         // Fetch Pages
-        // const fetchedPosts = await wp.categories().get();
+        // const fetchedPosts = await wp.pages().get();
         // Fetch Custom Post Types
-        // const fetchedPosts = await wp.categories().get();
-        // Fetch Users
-        // const fetchedPosts = await wp.categories().get();
-        // Fetch Posts by Status
-        // const fetchedPosts = await wp.categories().get();
-        // Fetch Search by Text
-        // const fetchedPosts = await wp.categories().get();
-        // Fetch Posts Ordered by Title
-        // const fetchedPosts = await wp.categories().get();
+        // const fetchedPosts = await wp.flag().get();
         // Fetch Posts by Category ID
         // const fetchedPosts = await wp.categories().get();
         // Fetch Posts by Category Slugs
@@ -63,7 +66,7 @@ function DoWpapiOne() {
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
             {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
@@ -80,7 +83,7 @@ function DoWpapiOne() {
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
             {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
@@ -97,7 +100,7 @@ function DoWpapiOne() {
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
             {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
@@ -111,52 +114,32 @@ function DoWpapiOne() {
         ))} */}
 
         {/* SEARCH POSTS BY TEXT */}
-        {/* {posts.map((post) => (
+        {posts.map((post) => (
           <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
-              SLUG: {post.slug}
-            </span>
+            {parser(post.title.rendered)}{' '}
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
-            <span className="badge badge-info pill p-2 ml-2">
+            <span className="badge badge-info pill p-2 ml-2 mr-2">
               CatID:{' '}
               {post.categories.map((cat) => {
                 return cat + ', ';
               })}
             </span>
+            <div className="badge badge-warning pill p-2 mr-2">
+              SLUG: {post.slug}
+            </div>
           </li>
-        ))} */}
+        ))}
 
         {/* POSTS BY PUBLISH STATUS */}
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            {parser(post.title.rendered)}{' '}
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
             <span className="badge badge-info pill p-2 ml-2">
-              CatID:{' '}
-              {post.categories.map((cat) => {
-                return cat + ', ';
-              })}
-            </span>
-          </li>
-        ))} */}
-
-        {/* PAGE BY SLUG */}
-        {/* {posts.map((post) => (
-          <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
-              SLUG: {post.slug}
-            </span>
-            <span className="badge badge-success pill p-2">ID: {post.id}</span>
-            <span className="badge badge-info pill p-2 ml-2">
-              CatID:{' '}
-              {post.categories.map((cat) => {
-                return cat + ', ';
-              })}
+              STATUS: {post.status}
             </span>
           </li>
         ))} */}
@@ -165,7 +148,7 @@ function DoWpapiOne() {
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
             {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>
@@ -179,16 +162,16 @@ function DoWpapiOne() {
         ))} */}
 
         {/* USERS ONLY */}
-        {/* {posts.map((post) => (
-          <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
-              SLUG: {post.slug}
+        {/* {posts.map((user) => (
+          <li key={user.id} className="list-group-item">
+            {parser(user.name)}{' '}
+            <span className="badge badge-warning pill p-2 mr-2">
+              SLUG: {user.slug}
             </span>
-            <span className="badge badge-success pill p-2">ID: {post.id}</span>
+            <span className="badge badge-success pill p-2">ID: {user.id}</span>
             <span className="badge badge-info pill p-2 ml-2">
-              CatID:{' '}
-              {post.categories.map((cat) => {
+              ROLE:{' '}
+              {user.roles.map((cat) => {
                 return cat + ', ';
               })}
             </span>
@@ -196,41 +179,35 @@ function DoWpapiOne() {
         ))} */}
 
         {/* CUSTOM POST TYPES ONLY */}
-        {/* {posts.map((post) => (
-          <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
-              SLUG: {post.slug}
+        {/* {posts.map((cpt) => (
+          <li key={cpt.id} className="list-group-item">
+            {parser(cpt.title.rendered)}{' '}
+            <span className="badge badge-warning pill p-2 mr-2">
+              SLUG: {cpt.slug}
             </span>
-            <span className="badge badge-success pill p-2">ID: {post.id}</span>
+            <span className="badge badge-success pill p-2">ID: {cpt.id}</span>
             <span className="badge badge-info pill p-2 ml-2">
-              CatID:{' '}
-              {post.categories.map((cat) => {
-                return cat + ', ';
-              })}
+              TYPE: {cpt.type}
             </span>
           </li>
         ))} */}
 
         {/* PAGES ONLY */}
-        {/* {posts.map((post) => (
-          <li key={post.id} className="list-group-item">
-            {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
-              SLUG: {post.slug}
+        {/* {posts.map((page) => (
+          <li key={page.id} className="list-group-item">
+            {parser(page.title.rendered)}{' '}
+            <span className="badge badge-warning pill p-2 mr-2">
+              SLUG: {page.slug}
             </span>
-            <span className="badge badge-success pill p-2">ID: {post.id}</span>
+            <span className="badge badge-success pill p-2">ID: {page.id}</span>
             <span className="badge badge-info pill p-2 ml-2">
-              CatID:{' '}
-              {post.categories.map((cat) => {
-                return cat + ', ';
-              })}
+              TYPE: {page.type}
             </span>
           </li>
         ))} */}
 
         {/* CATEGORIES ONLY */}
-        {posts.map((cat) => (
+        {/* {posts.map((cat) => (
           <li key={cat.id} className="list-group-item">
             {parser(cat.name)}{' '}
             <span className="badge badge-warning pill p-2 mr-2">
@@ -241,13 +218,13 @@ function DoWpapiOne() {
               Taxonomy: {cat.taxonomy}
             </span>
           </li>
-        ))}
+        ))} */}
 
         {/* POSTS ONLY */}
         {/* {posts.map((post) => (
           <li key={post.id} className="list-group-item">
             {parser(post.content.rendered)}{' '}
-            <span className="badge badge-warning pill p-2">
+            <span className="badge badge-warning pill p-2 mr-2">
               SLUG: {post.slug}
             </span>
             <span className="badge badge-success pill p-2">ID: {post.id}</span>

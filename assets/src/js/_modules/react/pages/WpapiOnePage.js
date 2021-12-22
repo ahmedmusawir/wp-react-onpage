@@ -9,8 +9,7 @@ function WpapiOnePage() {
       <div className="row justify-content-center">
         <div className="col-sm-12">
           <Content width="w-100" cssClassNames="bg-light mt-3">
-            <h1>WPAPI Test One</h1>
-            <h4>Add Topic Here...</h4>
+            <h3>WPAPI: Posts Search Results for 'moose'</h3>
           </Content>
           <Content width="w-100" cssClassNames="bg-light mt-3">
             <pre>

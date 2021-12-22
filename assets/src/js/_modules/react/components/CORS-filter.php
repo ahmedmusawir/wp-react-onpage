@@ -1,4 +1,5 @@
 <?php
+// DID NOT WORK
 add_filter('allowed_http_origins', 'add_allowed_origins');
 function add_allowed_origins($origins)
 {
