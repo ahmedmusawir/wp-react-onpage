@@ -71,6 +71,21 @@ function DoWpapiOne() {
     ]);
   };
 
+  const handleNext = async () => {
+    // console.log('next');
+    // const snapshot = await wp.posts();
+    const snapshot = await wp.posts().page(pageNumber);
+    const totalPages = snapshot._paging.totalPages;
+    console.log(totalPages);
+    setPageNumber(pageNumber + 1);
+    if (totalPages <= pageNumber) {
+      return;
+    }
+    console.log(snapshot);
+    console.log(pageNumber);
+    setArticles([...snapshot]);
+  };
+
   return (
     <>
       <div>
@@ -108,9 +123,11 @@ function DoWpapiOne() {
         </section>
       </div>
       {totalPages > 1 && pageNumber && (
-        <button className="btn btn-secondary" onClick={handleLoadMore}>
-          Load more
-        </button>
+        <>
+          <button className="btn btn-secondary" onClick={handleLoadMore}>
+            Load more
+          </button>
+        </>
       )}
     </>
   );

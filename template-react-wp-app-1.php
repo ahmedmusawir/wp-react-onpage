@@ -10,7 +10,7 @@
 
 <header id="header-test" class="site-header container text-center">
 
-  <h1 class="pt-3">React WP App One</h1>
+  <h1 class="pt-3">React with WP-API & REST</h1>
   <h4>(from wp-oop-php theme)</h4>
   <hr>
 

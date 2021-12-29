@@ -4,6 +4,8 @@ export const BlogContext = createContext();
 
 function BlogContextProvider(props) {
   const [posts, setPosts] = useState([]);
+  const [pageNumber, setPageNumber] = useState(2);
+  const [totalPages, setTotalPages] = useState(1);
   const [isPending, setIsPending] = useState(false);
 
   const wp = new WPAPI({
@@ -16,10 +18,14 @@ function BlogContextProvider(props) {
     async function fetchPosts() {
       try {
         setIsPending(true);
-        // Fetch posts
+        // FETCHING POSTS
         const fetchedPosts = await wp.posts().get();
-
         // console.log(fetchedPosts);
+
+        // GETTING TOTAL PAGES
+        const totalPages = fetchedPosts._paging.totalPages;
+        setTotalPages(totalPages);
+
         setPosts(fetchedPosts);
         setIsPending(false);
       } catch (e) {
@@ -31,6 +37,39 @@ function BlogContextProvider(props) {
 
     fetchPosts();
   }, []);
+
+  const fetchMorePosts = async (pageNumber) => {
+    const request = wp.posts();
+
+    if (pageNumber > 1) {
+      request.page(pageNumber);
+    }
+
+    const posts = await request.get();
+
+    return {
+      posts,
+      nextPageNumber:
+        posts._paging.totalPages > pageNumber ? pageNumber + 1 : null,
+    };
+  };
+
+  const handleLoadMore = async () => {
+    const snapshot = await fetchMorePosts(pageNumber);
+    // console.log('HANDLE MORE', pageNumber);
+    setIsPending(true);
+
+    setPageNumber(snapshot.nextPageNumber);
+    setPosts([
+      // Preserve previous WordPress posts
+      ...posts,
+
+      // Add new WordPress posts
+      ...snapshot.posts,
+    ]);
+
+    setIsPending(false);
+  };
 
   const deletePost = async (id) => {
     setIsPending(true);
@@ -47,7 +86,17 @@ function BlogContextProvider(props) {
   };
 
   return (
-    <BlogContext.Provider value={{ posts, setPosts, deletePost, isPending }}>
+    <BlogContext.Provider
+      value={{
+        posts,
+        setPosts,
+        deletePost,
+        handleLoadMore,
+        totalPages,
+        pageNumber,
+        isPending,
+      }}
+    >
       {props.children}
     </BlogContext.Provider>
   );

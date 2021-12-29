@@ -5,21 +5,14 @@ import parse from 'react-html-parser';
 import { BlogContext } from '../contexts/BlogContext';
 
 function BlogIndex() {
-  const {
-    posts,
-    deletePost,
-    handleLoadMore,
-    totalPages,
-    pageNumber,
-    isPending,
-  } = useContext(BlogContext);
+  const { posts, deletePost, isPending } = useContext(BlogContext);
 
   return (
     <div>
       <section className="list-group">
         {isPending && (
           <div className="text-center">
-            <Loader type="ThreeDots" color="red" height={100} width={100} />
+            <Loader type="Bars" color="red" height={100} width={100} />
           </div>
         )}
         {posts &&
@@ -48,11 +41,6 @@ function BlogIndex() {
             </article>
           ))}
       </section>
-      {totalPages > 1 && pageNumber && (
-        <button className="btn btn-secondary" onClick={handleLoadMore}>
-          Load more
-        </button>
-      )}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import EditPostPage from './pages/EditPostPage';
 import AddPostPage from './pages/AddPostPage';
 import AjaxOnePage from './pages/AjaxOnePage';
 import WpapiOnePage from './pages/WpapiOnePage';
+import WpapiCrudPage from './pages/WpapiCrudPage';
 
 function ReactWpApp1() {
   return (
@@ -19,6 +20,9 @@ function ReactWpApp1() {
         <MainNavbar />
         <main>
           <Switch>
+            {/* <Route exact path="/">
+              <WpapiOnePage />
+            </Route> */}
             <Route exact path="/">
               <HomePage />
             </Route>
@@ -36,6 +40,9 @@ function ReactWpApp1() {
             </Route>
             <Route exact path="/wpapi-one">
               <WpapiOnePage />
+            </Route>
+            <Route exact path="/wpapi-crud">
+              <WpapiCrudPage />
             </Route>
             <Route exact path="/page1">
               <ReactAppThemOne />

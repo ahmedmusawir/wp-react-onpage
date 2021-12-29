@@ -36,7 +36,7 @@ function SinglePostPage() {
         <div className="col-sm-12">
           {singlePost && (
             <Content width="w-100 pt-3" cssClassNames="bg-light p-5">
-              <h1>{singlePost.title.rendered}</h1>
+              <h1>{parser(singlePost.title.rendered)}</h1>
               <h4>Post ID: {id}</h4>
               {parser(singlePost.content.rendered)}
             </Content>
