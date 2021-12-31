@@ -16,6 +16,12 @@ function AddForm() {
     password: '8gLw rmzE hQhZ av4L 1ljg x119',
   });
 
+  // const wp = new WPAPI({
+  //   endpoint: 'https://digitalsupportstaff.com/wp-json',
+  //   username: 'cgteam',
+  //   password: 'hUoV 8WCW Dllz 4rP4 BlEo Ip27',
+  // });
+
   const createPost = async (post) => {
     await wp
       .posts()

@@ -7,10 +7,16 @@ function BlogContextProvider(props) {
   const [isPending, setIsPending] = useState(false);
 
   const wp = new WPAPI({
-    endpoint: 'http://localhost:10004/wp-json',
+    endpoint: 'https://digitalsupportstaff.com/wp-json',
     username: 'cgteam',
-    password: '8gLw rmzE hQhZ av4L 1ljg x119',
+    password: 'hUoV 8WCW Dllz 4rP4 BlEo Ip27',
   });
+
+  // const wp = new WPAPI({
+  //   endpoint: 'http://localhost:10004/wp-json',
+  //   username: 'cgteam',
+  //   password: 'yAAC Qruf eCy3 xyou i1Rf zZAb',
+  // });
 
   useEffect(() => {
     async function fetchPosts() {

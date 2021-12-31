@@ -8,11 +8,26 @@ function BlogContextProvider(props) {
   const [totalPages, setTotalPages] = useState(1);
   const [isPending, setIsPending] = useState(false);
 
+  // ODSI SITE - LOCAL
   const wp = new WPAPI({
-    endpoint: 'http://localhost:10004/wp-json',
-    username: 'cgteam',
-    password: '8gLw rmzE hQhZ av4L 1ljg x119',
+    endpoint: 'http://localhost:10028/wp-json',
+    // username: 'cgteam',
+    // password: 'gPjC IdPA BuKE hkGO nG5I 9wL4',
   });
+
+  // OOP PHP SITE - LOCAL
+  // const wp = new WPAPI({
+  //   endpoint: 'http://localhost:10004/wp-json',
+  //   username: 'cgteam',
+  //   password: '8gLw rmzE hQhZ av4L 1ljg x119',
+  // });
+
+  // DIGITAL SUPPORT STAFF SITE - REMOTE VPS
+  // const wp = new WPAPI({
+  //   endpoint: 'https://digitalsupportstaff.com/wp-json',
+  //   username: 'cgteam',
+  //   password: 'hUoV 8WCW Dllz 4rP4 BlEo Ip27',
+  // });
 
   useEffect(() => {
     async function fetchPosts() {

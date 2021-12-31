@@ -8,9 +8,15 @@ function DoWpapiCrud() {
 
   const wp = new WPAPI({
     endpoint: 'http://localhost:10004/wp-json',
-    username: 'cgteam',
-    password: '8gLw rmzE hQhZ av4L 1ljg x119',
+    username: 'moose',
+    password: 'xZeL OGcT X393 LGz7 Agfo FWnL',
   });
+
+  // const wp = new WPAPI({
+  //   endpoint: 'http://localhost:10004/wp-json',
+  //   username: 'cgteam',
+  //   password: '8gLw rmzE hQhZ av4L 1ljg x119',
+  // });
   // SETTING CPT ROUTE
   wp.flag = wp.registerRoute('wp/v2', '/flag/(?P<id>\\d+)');
 
@@ -19,7 +25,9 @@ function DoWpapiCrud() {
       try {
         setIsPending(true);
         // DELETE CUSTOM POST TYPE: FLAG w/ ACF
-        const fetchedPosts = await wp.flag().id(1211).delete();
+        // const fetchedPosts = await wp.posts();
+        const fetchedPosts = await wp.posts().id(1079).delete();
+        // const fetchedPosts = await wp.flag().id(1079).delete();
         console.log(fetchedPosts);
         setPosts(fetchedPosts);
         setIsPending(false);

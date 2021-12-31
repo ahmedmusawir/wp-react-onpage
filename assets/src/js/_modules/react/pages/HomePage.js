@@ -9,7 +9,7 @@ function HomePage() {
       <div className="row justify-content-center">
         <div className="col-sm-12">
           <Content width="w-100 pt-5" cssClassNames="">
-            <h1>Blog Index</h1>
+            <h1>Blog Index </h1>
             <h4>Using NPM WPAPI</h4>
           </Content>
           <Content width="w-100 pt-2" cssClassNames="">
